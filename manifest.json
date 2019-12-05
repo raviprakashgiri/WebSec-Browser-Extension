@@ -1,0 +1,33 @@
+{
+  "manifest_version": 2,
+  "name": "OMS6262 Extension",
+  "description": "This extension detects whole script injection and bypass frame-busting.",
+  "version": "1.0",
+
+  "browser_action": {
+    "default_icon": "icon.png",
+    "default_popup" : "popup.html"
+  },
+
+  "content_scripts": [
+  {
+    "matches": ["*://*/*"],
+    "run_at": "document_start",
+    "js": ["my_script.js"],
+    "all_frames": true
+  }
+  ],
+  
+  "permissions": [
+    "webRequest",
+    "webRequestBlocking",
+    "<all_urls>",
+    "notifications"
+  ],
+
+
+  "background": {
+    "scripts": ["background.js"],
+    "persistent": true
+  }
+}
